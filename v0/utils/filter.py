@@ -46,7 +46,7 @@ def spot_availability(spot_crop):
     non_black_pixels = cv2.countNonZero(spot)
 
     # more black pixels than white ones -> car spot empty 
-    if non_black_pixels < 900:
+    if non_black_pixels < 200:
         return True        
 
     return False
