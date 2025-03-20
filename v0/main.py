@@ -8,12 +8,12 @@ from model import view_parking
 def main():
     view_parking("../data/Aerial View - Woburn Mall.mp4")
     
-    #sl.header("Fraqtory")
-    #sl.subheader("Parking Spots")
+    sl.header("Fraqtory")
+    #l.subheader("Parking Spots")
 
 
-    #if sl.button("Next"):
-    #    sl.video(view_parking("data/Aerial View - Woburn Mall.mp4"))
+    if sl.button("Next"):
+        sl.video(view_parking("data/Aerial View - Woburn Mall.mp4"))
         
 
 

@@ -3,7 +3,7 @@ import cv2
 from utils.filter import *
 
 def check_parking_spots():  
-    mask = cv2.imread("../masks/new.png", 0)
+    mask = cv2.imread("../masks/test.png", 0)
 
     p_spots_bounding_boxes = cv2.connectedComponentsWithStats(mask, 4, cv2.CV_32S)
     p_spots_positions = extract_spots_with_mask(p_spots_bounding_boxes)
@@ -16,13 +16,19 @@ def view_parking(footage_path):
     total_spots, spots_positions = check_parking_spots()
 
     ret = True
+    pause = False
 
     while ret:
         # to loop video 
         if cap.get(cv2.CAP_PROP_POS_FRAMES) == cap.get(cv2.CAP_PROP_FRAME_COUNT):
             cap.set(cv2.CAP_PROP_POS_FRAMES, 0)
-
-        ret, frame = cap.read()
+    	
+        if cv2.waitKey(25) & 0xFF == ord('q'):
+            break
+        if cv2.waitKey(25) & 0xFF == ord('p'):
+            pause = not pause
+        if not pause:
+            ret, frame = cap.read()
         
         for spot in spots_positions:
             empty_counter = 0
@@ -36,9 +42,8 @@ def view_parking(footage_path):
 
         cv2.imshow('frame', frame)
 
-        if cv2.waitKey(25) & 0xFF == ord('q'):
-            break
         
+            
 
         
     cap.release()
