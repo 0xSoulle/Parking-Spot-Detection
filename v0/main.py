@@ -1,19 +1,20 @@
 # Streamlit frontend
 
-import streamlit as sl
-from model import view_parking
+import streamlit as st
+from detector import view_parking
 
-
+footage_path = "../data/Aerial View - Woburn Mall.mp4"
 
 def main():
-    view_parking("../data/Aerial View - Woburn Mall.mp4")
+    #view_parking(footage_path)
     
-    sl.header("Fraqtory")
-    #l.subheader("Parking Spots")
+    st.header("Fraqtory")
+    st.subheader("Parking Spots")
 
+    st_frame = st.empty()
 
-    if sl.button("Next"):
-        sl.video(view_parking("data/Aerial View - Woburn Mall.mp4"))
+    for frame in view_parking(footage_path):
+        st_frame.image(frame)
         
 
 

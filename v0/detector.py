@@ -40,11 +40,11 @@ def view_parking(footage_path):
             else:
                 cv2.rectangle(frame, (x1,y1), (x1 + w, y1 + h), (0,0,255),2)
 
-        cv2.imshow('frame', frame)
-
+        #cv2.imshow('frame', frame)
+        _,frame_buffer = cv2.imencode('.jpg', frame)
+        frame_bytes = frame_buffer.tobytes()
         
-            
-
-        
+        yield frame_bytes
+         
     cap.release()
     cv2.destroyAllWindows()
