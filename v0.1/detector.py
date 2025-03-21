@@ -5,8 +5,8 @@ from tools.filter import *
 
 weights = 'tools/weights.pt'
 
-def get_parking_spots():  
-    mask = cv2.imread("../masks/Aerial View - Manual.png", 0)
+def get_parking_spots(mask_path):  
+    mask = cv2.imread(mask_path, 0)
 
     p_spots_bounding_boxes = cv2.connectedComponentsWithStats(mask, 4, cv2.CV_32S)
     p_spots_positions = extract_spots_with_mask(p_spots_bounding_boxes)
@@ -23,10 +23,10 @@ def spot_availability(yolo, cropping):
     
     return False
 
-def view_parking(footage_path):
+def view_parking(footage_path, mask_path):
 
     cap = cv2.VideoCapture(footage_path)
-    total_spots, spots_positions = get_parking_spots()
+    total_spots, spots_positions = get_parking_spots(mask_path)
     
     ret = True
     pause = False
