@@ -10,6 +10,9 @@ def main():
     
     st.header("Fraqtory")
     st.subheader("Parking Spots")
+    
+    st.file_uploader('Upload video')
+    st.file_uploader('Upload video mask')
 
     st_frame = st.empty()
     info = st.empty()
@@ -18,7 +21,6 @@ def main():
         st_frame.image(frame)
         info.write(f"Empty Spots: {empty} / Total Spots: {total_spots}")
 
-          
-        s
+        
 if __name__ == "__main__":
     main()

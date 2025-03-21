@@ -3,7 +3,7 @@ import cv2
 from utils.filter import *
 
 def check_parking_spots():  
-    mask = cv2.imread("../masks/test.png", 0)
+    mask = cv2.imread("../masks/Aerial View - Manual.png", 0)
 
     p_spots_bounding_boxes = cv2.connectedComponentsWithStats(mask, 4, cv2.CV_32S)
     p_spots_positions = extract_spots_with_mask(p_spots_bounding_boxes)

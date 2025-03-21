@@ -3,13 +3,16 @@
 import streamlit as st
 from detector import view_parking
 
-footage_path = "../data/Aerial View - Woburn Mall.mp4"
+demo_path = "../data/Aerial View - Woburn Mall.mp4"
 
 def main():
     #view_parking(footage_path)
     
     st.header("Fraqtory")
     st.subheader("Parking Spots")
+
+    st.file_uploader('Upload video')
+    st.file_uploader('Upload video mask')
 
     st_frame = st.empty()
 
