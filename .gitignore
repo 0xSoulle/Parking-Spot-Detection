@@ -1,3 +1,4 @@
-/idea
-/.venv
-/.gitattributes
+.idea
+venv
+.gitattributes
+/last
